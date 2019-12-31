@@ -18,5 +18,5 @@ created by jason walter because he didn't feel like setting keybinds
 
 ```
 
-#license
+# license
 licensed gnu gplv3
