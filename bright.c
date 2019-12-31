@@ -9,6 +9,7 @@ void print_help(void) {
             options:\n \
                 \t-s num\tset numerical brightness value\n \
                 \t-m\tdisplay max brightness value\n \
+                \t-c\tdisplay current brightness value\n \
                 \t-h\tprint this message\n\n \
             brightness number must be within range specified in /sys/class/backlight/intel_backlight/max_brightness\n \
             keep in mind that you will need sufficient privileges to edit these values. do a setuid or write a wrapper, it's not my problem\n \
@@ -32,6 +33,7 @@ int get_max_bright(void) {
 int main(int argc, char **argv) {
     int option;	// for getopt()
     int max;	// maximum brightness value
+    int bright;	// current brightness value
     FILE *fp_sys_bright;
     
     if(argc < 2) print_help();
@@ -39,7 +41,7 @@ int main(int argc, char **argv) {
     max = get_max_bright();
     
     /* loop through given options */
-    while((option = getopt(argc, argv, ":s:m")) != -1) {
+    while((option = getopt(argc, argv, ":s:mc")) != -1) {
         switch(option) {
             case 's':	// setting numerical value
                 /* test against maximum and minimum value */
@@ -56,6 +58,13 @@ int main(int argc, char **argv) {
             case 'm':
                 printf("%d\n", max);
                 
+                break;
+            case 'c':
+                fp_sys_bright = fopen("/sys/class/backlight/intel_backlight/brightness", "r");
+                fscanf(fp_sys_bright, "%d", &bright);
+                printf("%d\n", bright);
+                fclose(fp_sys_bright);
+            
                 break;           
             default:	// some other thing that we don't care about, or -h
                 print_help();
