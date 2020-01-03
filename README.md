@@ -10,6 +10,7 @@ set display brightness on intel laptops: bright -s num
 options:
 	-s num	set numerical brightness value
 	-m	display max brightness value
+	-c	display current brightness value
 	-h	print this message
 
 brightness number must be within range specified in /sys/class/backlight/intel_backlight/max_brightness
