@@ -1,10 +1,10 @@
 # bright
-dumb c program to set brightness on intel laptops because i didn't want to set keybinds
+C program to set brightness on Intel laptops because I didn't want to set keybinds.
 
-there's also a wrapper script in here because i was feeling generous
+There's also a wrapper script to make permissions easier to manage.
 
 # usage
-as per the help text:
+As per the help text:
 ```
 set display brightness on intel laptops: bright -s num
 options:
@@ -14,10 +14,10 @@ options:
 	-h	print this message
 
 brightness number must be within range specified in /sys/class/backlight/intel_backlight/max_brightness
-keep in mind that you will need sufficient privileges to edit these values. do a setuid or write a wrapper, it's not my problem
+keep in mind that you will need sufficient privileges to edit these values. do a setuid or write a wrapper.
 created by jason walter because he didn't feel like setting keybinds
 
 ```
 
 # license
-licensed gnu gplv3
+Licensed GNU GPLv3
